@@ -26,6 +26,18 @@
     
     <!--jscookie-->
     <script src="inc/jquery_cookie/jquery.cookie.js" type="text/javascript"></script>
+
+    <style>
+        .row{
+            margin-bottom:20px;
+        }
+        .true {
+            color: green;
+        }
+        .false {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,19 +56,19 @@
                 <table class="table">
                     <tr>
                         <td>input</td>
-                        <td><code>goober</code></td>
+                        <td><code><span class="input">goober</span></code></td>
                     </tr>
                     <tr>
                         <td>goal</td>
-                        <td>Match entire string</td>
+                        <td><code><span class="target">goober</span></code></td>
                     </tr>
                     <tr>
                         <td>regex</td>
-                        <td><input class='form-control' type='text'/></td>
+                        <td><input class='form-control regex' type='text'/></td>
                     </tr>
                     <tr>
                         <td>result</td>
-                        <td><code><span>...</span></code></td>
+                        <td><span class="result">...</span></td>
                     </tr>
                 </table>
                 <button class="btn btn-success regex_this" regex='match'>regex!</button>

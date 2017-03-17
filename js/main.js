@@ -16,22 +16,43 @@ $(document).ready(function(){
 		    regex : new RegExp($(regex_table).find('.regex').val()),
 		    result : $(regex_table).find('.result').html()
 	    }
-	    // check regex
-	    regex_package.verdict = regex_package.regex.test(regex_package.input)
 
 	    // debug
 	    console.log(regex_package);
 
-	    // set verdict
-    	var verdict_msg = $(regex_table).find('.result');
-	    if (regex_package.verdict){
-	    	verdict_msg.html('true');
-	    	verdict_msg.addClass('true');
+	    if (regex_type == 'match'){
+		    // check regex
+		    regex_package.verdict = regex_package.regex.test(regex_package.input)
+		    // set verdict
+	    	var verdict_msg = $(regex_table).find('.result');
+	    	if (regex_package.verdict){
+		    	verdict_msg.html('true');
+		    	verdict_msg.removeClass('false');
+		    	verdict_msg.addClass('true');
+		    }
+	    	else {
+	    		verdict_msg.html('false');
+	    		verdict_msg.removeClass('true');
+	    		verdict_msg.addClass('false');	
+	    	}
 	    }
-    	else {
-    		verdict_msg.html('false');
-    		verdict_msg.addClass('false');	
-    	}
+
+	    if (regex_type == 'replace'){
+	    	regex_package.sub = new RegExp($(regex_table).find('.sub').val());
+	    	regex_package.derived = regex_package.input.replace(regex_package.regex, regex_package.sub);
+	    	regex_package.verdict = regex_package.derived == regex_package.target;
+	    	var verdict_msg = $(regex_table).find('.result');
+	    	if (regex_package.verdict){
+		    	verdict_msg.html(regex_package.derived);
+		    	verdict_msg.removeClass('false');
+		    	verdict_msg.addClass('true');
+		    }
+	    	else {
+	    		verdict_msg.html(regex_package.derived);
+	    		verdict_msg.removeClass('true');
+	    		verdict_msg.addClass('false');	
+	    	}
+	    }
 	    
 	});
 
